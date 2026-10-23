@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct prog{
+    int zad = 0,sht = 0;
+};
+bool c(const prog& a,const prog& b){
+    return tie(a.zad,b.sht) > tie(b.zad,a.sht);
+}
+int main() {
+    int n,m,l = 0;
+    cin >> n >> m;
+    vector<prog> d(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> d[i].zad >> d[i].sht;
+    }
+    sort(d.begin(), d.end(), c);
+    auto w = d[m - 1].sht;
+    auto w2 = d[m - 1].zad;
+    for (int i = 0; i < d.size(); ++i) {
+        if(d[i].sht == w and d[i].zad == w2){
+            l += 1;
+        }
+    }
+cout << l;
+}
